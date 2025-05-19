@@ -25,17 +25,4 @@ class Customer:
         print(f"{self.name} is creating an order for {coffee.name} at ${price:.2f}")
         return Order(self, coffee, price)
 
-    @classmethod
-    def most_aficionado(cls, coffee):
-        from order import Order
-        customers = {}
-        for order in Order.all():
-            if order.coffee() == coffee:
-                customers[order.customer()] = customers.get(order.customer(), 0) + order.price()
-        if customers:
-            most_spent = max(customers, key=customers.get)
-            print(f"{most_spent.name} spent the most on {coffee.name}: ${customers[most_spent]:.2f}")
-            return most_spent
-        else:
-            print(f"No orders found for coffee: {coffee.name}")
-            return None
+   

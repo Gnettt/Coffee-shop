@@ -27,11 +27,7 @@ class Coffee:
         return count
 
     def average_price(self):
-        orders = self.orders()
-        if orders:
-            average = sum(order.price() for order in orders) / len(orders)
-            print(f"Average price of {self.name}: ${average:.2f}")
-            return average
-        else:
-            print(f"No orders found for {self.name}")
-            return 0.0
+        prices = [order.price for order in self.orders()]
+        return sum(prices) / len(prices) if prices else 0
+        print(f"[DEBUG] Average price for {self.name}: ${avg:.2f}")
+        
